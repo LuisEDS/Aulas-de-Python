@@ -1,0 +1,78 @@
+class Livro(object):
+
+    def __init__(self, titulo, autores, paginas=100, preco=0.0):
+        self.titulo = titulo
+        self.autores = autores
+        self.paginas = paginas
+        self.preco = preco
+
+    def get_titulo(self):
+        return self.titulo
+
+    def get_autores(self):
+        return self.autores
+
+    def get_paginas(self):
+        return self.paginas
+
+    def get_preco(self):
+        return self.preco
+
+    def set_autores(self, n_autores):
+        if isinstance(n_autores, list) and len (n_autores) > 0:
+            self.autores = n_autores
+        else:
+            print('-Erro: 0 tipo de dado informado é invalido')
+    def mostra_autores(self):
+        print('-- Autores na vertical:')
+        for i, autor in enumerate (self.autores):
+            print(f'{i+1} - {autor}')
+
+    def adiciona_autor(self, autor):
+        self.autores.append(autor)
+
+    def remove_autor(self,autor):
+        if autor in self.autores:
+            self.autores.remove(autor)
+        else:
+            print(f'--Erro: (remove): autor {autor} não está cadastrado')
+
+    def pesquisa_autor(self,autor):
+        if autor in self.autores:
+            print(f'Autor {autor} encontrado com sucesso.')
+        else:
+            print(f'-Erro(pesquisa): autor {autor} não está cadastrado no livro.')
+
+    def substitui_autor(self,autor):
+        if autor in self.autores:
+            indice = self.autores.index(autor)
+            self.autores.remove(autor)
+            autor_atualizado = input("Nome Atualizado:")
+            self.autores.insert(indice, autor_atualizado)
+            print(f"autor{autor_atualizado} atualizado com sucesso")
+        else:
+            print(f'-Erro{autor} não foi substituido')
+
+
+
+
+if __name__ =="__main__":
+    livro1 = Livro("Harry Potter", ['João Guilherme' , 'Ana'] ,200, 39.90)
+    print("autores:", livro1.get_autores())
+    livro1.set_autores(['Pedro', 'Alice'])
+    print("____________________________")
+    print("autores:",livro1.get_autores())
+    print("____________________________")
+    livro1.set_autores(234)
+    print("Autores:", livro1.get_autores())
+    print("____________________________")
+    livro1.mostra_autores()
+    livro1.adiciona_autor("xxx")
+    print("Autores:", livro1.get_autores())
+    livro1.remove_autor("Pedro")
+    print("Autores:", livro1.get_autores())
+    livro2 = Livro("A sutil arte", ["jonas", "Glauber"], 230, 56.90)
+    livro2.get_autores()
+    print("Titulo:", livro2.get_titulo())
+    print("Autores:", livro2.get_autores())
+    print("Autor:", livro1.pesquisa_autor("Lucas"))
