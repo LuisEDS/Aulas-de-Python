@@ -1,0 +1,76 @@
+# 12- Crie o método rendimentos, ele recebe o valor em reais que o professor ganha por turma
+# que ministra e mostra o valor dos seus rendimentos, o objetivo é calcular o rendimento
+# do professor que depende da quantidade de turmas e do valor que ele ganha por turma.
+#
+# - E a segunda subclasse Funcionário tem os atributos de instância nome e salario
+# - O construtor da subclasse Funcionário recebe dois parâmetros e chama o construtor
+# da superclasse enviando o nome e depois armazena o valor float no atributo salário.
+# - Use valor default (padrão) no construtor
+# - No método set referente ao atributo salario, faça uma crítica.
+
+class Pessoa(object):
+    def __init__(self, nome):
+        self.nome = nome
+
+    def get_nome(self):
+       return self.nome
+
+    def set_nome(self,novo_nome):
+        if type(novo_nome) == str:
+            self.nome = novo_nome
+        else:
+            print("Erro (set_nome): o tipo tem que ser str")
+    def valor_extra(self):
+        vl_extra = self.dependente * 100
+        return vl_extra
+
+
+class Professor(Pessoa):
+    def __init__(self, nome, quantidade_turma):
+        super().__init__(nome)
+        self.quantidade_turma = quantidade_turma
+
+    def get_quantitade_turma(self):
+        return self.quantidade_turma
+
+    def set_quantidade_turma(self, nova_qtd_turma):
+        self.quantidade_turma = nova_qtd_turma
+
+    def __str__(self):
+        s = f"nome: {self.nome}, Quantidade de Turmas: {self.quantidade_turma}"
+        return s
+
+    def rendimentos(self,rendimentos):
+        self.rendimentos = rendimentos
+
+
+class Funcionario(Pessoa):
+    def __init__(self, nome, salario):
+        super().__init__(nome)
+        self.salario = salario
+
+    def get_salario(self):
+        return self.salario
+
+    def set_salario(self, n_salario):
+        self.salario = n_salario
+
+    def __str__(self):
+        s = f"nome: {self.nome}, salario: {self.salario}"
+        return s
+
+
+
+if __name__ == '__main__':
+    p1 = Professor("Antonio", 7)
+    print(p1)
+    print("Nome:", p1.get_nome())
+    p1.set_nome("Nathan")
+    print(F"Nome: {p1.get_nome()}")
+    p1.set_nome("Luis")
+    print(f"Nome:{p1.get_nome()}")
+    p1.get_quantitade_turma()
+    print("Quantidade de turma:", p1.get_quantitade_turma())
+    p2 = Professor("Teste", 9)
+    print(p2)
+    p2.valor_extra(200)
