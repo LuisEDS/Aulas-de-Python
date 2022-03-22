@@ -1,0 +1,82 @@
+from abc import ABC, abstractmethod
+class FormaGeometrica(ABC):
+    # def __init__(self, area, perimetro):
+    #     self.area = area
+    #     self.perimetro = perimetro                           (na superclasse não deve dar algum parametro)
+
+    @abstractmethod
+    def area(self):
+        pass
+
+    @abstractmethod
+    def perimetro(self):
+        pass
+
+    def mensagem(self):
+        print("Metodo concreto da superclasse abstrata Formaeometrica que herdade ABC")
+
+    def mensagem2(self):
+        print("Metodo concreto da superclasse abstrata Formaeometrica que herdade ABC")
+        print("Dados do objeto:", self)
+
+    def mensagem3(self):
+        print("Metodo concreto da superclasse abstrata Formaeometrica que herdade ABC")
+        print("Nome da classe:", self.__class__.__name__)
+
+
+
+class Quadrado(FormaGeometrica):
+    def __init__(self, lado):
+        self.lado = lado
+
+    def get_lado(self):
+       return self.lado
+
+    def set_lado(self, valor):
+        self.lado = valor
+
+    def area(self):
+        vl_area = self.lado * self.lado
+        return vl_area
+
+    def perimetro(self):
+        vl_perimetro = self.lado * 4
+        return vl_perimetro
+
+import math
+class Circulo(FormaGeometrica):
+    def __init__(self, raio):
+        self.raio = raio
+
+    def get_raio(self):
+        return self.raio
+
+    def area(self):
+        vl_area = 3.14 * self.raio ** 2
+        return vl_area
+
+    def perimetro(self):
+        vl_perimetro = 2 * 3,14 * self.raio
+        return vl_perimetro
+
+
+if __name__ == '__main__':
+    #obj1 = FormaGeometrica(10)
+    obj = Quadrado(10)
+    print("lado:", obj.get_lado())
+    print("perimetro:", obj.perimetro())
+    print("Area:", obj.area())
+    obj.set_lado(5)
+    print("___________________")
+    print("lado:", obj.get_lado())
+    print("perimetro:", obj.perimetro())
+    print("Area:", obj.area())
+    print("___________________")
+    pizza = Circulo(5)
+    print("area:", pizza.area())
+    print("perimetro:", pizza.perimetro())
+    print("raio:", pizza.get_raio())
+    pizza.mensagem()
+    pizza.mensagem2()
+    obj.mensagem3()
+
